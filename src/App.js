@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//import './App.css';
+import React, {createContext} from 'react'
+import { CommonContext } from './Component/CommonContext';
+//import Main from './Component/Main';
+//import UpdateButton from './Component/UpdateButton';
+//import Footer from './Component/Footer';
+//import Header from './Component/Header';
+class  App extends  React.Component {
+  constructor(){
+    super() 
+    this.updateColor=(color)=>{
+      this.setState({
+        color:color
+      
+       } )
+  }
+    this.state={
+
+      color:"green",
+      updateColor:this.updateColor
+    }
+      this.updateColor=()=>{
+        this.setState({
+          color:"red"
+        
+         } )
+    }
+    
+  }
+  render(){
+   
+    return (
+    
+      <CommonContext.Provider value={this.state}>
+        <Header/>
+        <h1>Complete and easy  Api</h1>
+       <Main/>
+       <UpdateButton/>
+       <Footer/>
+      </CommonContext.Provider>
+  
+     
+    );
+  }
+  
 }
 
 export default App;
